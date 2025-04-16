@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - PharmaCare</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="shortcut icon" href="../images/favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <!--Hiệu ứng nền-->
+    <div class="background-effects">
+        <div class="grid-pattern"></div>
+        <!-- Hiệu ứng sóng -->
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+        <!-- Đường cong -->
+        <div class="curved-line curved-line-1"></div>
+        <div class="curved-line curved-line-2"></div>
+        <div class="curved-line curved-line-3"></div>
+        <div class="curved-line curved-line-4"></div>
+        <!-- Hạt sáng -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <main class="modern-auth-container">
+        <div class="auth-wrapper">
+            <div class="auth-image-container">
+                <div class="image-collage">
+                    <img src="../images/banner.svg" alt="Banner" class="collage-image">
+                </div>
+            </div>
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <img src="../images/logo.svg" alt="PharmaCare Logo">
+                    </div>
+                    <div class="auth-switcher">
+                        <img src="../images/id-badge.svg" alt="ID" class="icon-badge">
+                        <span class="arrow-icon">→</span>
+                        <img src="../images/id-app.svg" alt="App" class="icon-app">
+                    </div>
+                </div>
+
+                <h1 class="auth-title">Tài khoản sử dụng mọi dịch vụ</h1>
+
+                <form id="loginForm" class="modern-auth-form">
+                    <div class="form-field">
+                        <label for="phone">Tên đăng nhập *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+                    </div>
+
+                    <button type="submit" class="btn-auth-primary">Tiếp tục</button>
+
+                    <div class="terms-agreement">
+                        Bằng cách tiếp tục, bạn đồng ý với <a href="/dieu-khoan" class="terms-link">Điều khoản</a> và
+                        <a href="/chinh-sach-bao-mat" class="terms-link">Chính sách bảo mật</a> của PharmaCare
+                    </div>
+                </form>
+
+                <div class="demo-credentials">
+                    <p>Tài khoản thử nghiệm: <strong>0987654321</strong> / Mật khẩu: <strong>1234</strong></p>
+                    <p>Tài khoản thử nghiệm: <strong>0987654333</strong> / Mật khẩu: <strong>4321</strong></p>
+                </div>
+
+                <div class="alternative-login">
+                    <div class="divider">
+                        <span>Hoặc đăng nhập bằng</span>
+                    </div>
+                    <div class="social-login">
+                        <button class="social-btn btn-qr">
+                            <i class="fas fa-qrcode"></i>
+                        </button>
+                        <button class="social-btn btn-fingerprint">
+                            <i class="fas fa-fingerprint"></i>
+                        </button>
+                        <button class="social-btn btn-apple">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                        <button class="social-btn btn-google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="social-btn btn-facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/auth.js"></script>
+</body>
+</html>
