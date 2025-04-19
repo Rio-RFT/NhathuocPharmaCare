@@ -230,11 +230,11 @@ Dự án này được cấp phép dưới **Giấy phép MIT**. Xem chi tiết 
 
 ## 📫 Liên Hệ
 
-*   **Sinh viên thực hiện:** Nguyễn Quốc Lâm
-*   **MSSV:** 1923050046
-*   **Lớp:** 23DTH1
-*   **Email:** quoclam705@gmail.com
-*   **GitHub:** https://github.com/Rio-RFT
+*   **Sinh viên thực hiện:** [Tên Của Bạn]
+*   **MSSV:** [MSSV Của Bạn]
+*   **Lớp:** [Lớp Của Bạn]
+*   **Email:** [Email Của Bạn]
+*   **GitHub:** [https://github.com/Rio-RFT](https://github.com/Rio-RFT) *(Thay link)*
 
 ---
 

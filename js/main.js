@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeMainNav();
     initializeUnitSelection();
     initializeBootstrapCarousel();
+    initializeProductFilters();
 
     // Tìm kiếm
     const searchInput = document.getElementById('search-input');
@@ -470,41 +471,124 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Biến global để lưu trữ bản đồ
+    let pharmacyMap;
+
+    // Hàm hiển thị bản đồ nhà thuốc - tái sử dụng cho cả nút menu và ô service
+    function showPharmacyMap() {
+        const pharmacyMapModal = new bootstrap.Modal(document.getElementById('pharmacyMapModal'));
+        // Hiển thị modal
+        pharmacyMapModal.show();
+
+        // Khởi tạo bản đồ nếu chưa được khởi tạo
+        if (!pharmacyMap) {
+            // Tọa độ của nhà thuốc (Đ. Nguyễn Khuyến, Biên Hòa)
+            const lat = 10.9567;  // Đây là tọa độ vĩ độ ước tính
+            const lng = 106.8450; // Đây là tọa độ kinh độ ước tính
+
+            // Khởi tạo bản đồ sau khi modal hiển thị
+            setTimeout(() => {
+                // Khởi tạo bản đồ với OpenStreetMap
+                pharmacyMap = L.map('pharmacyMap').setView([lat, lng], 16);
+
+                // Thêm layer OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(pharmacyMap);
+
+                // Thêm marker vị trí nhà thuốc
+                const pharmacyMarker = L.marker([lat, lng]).addTo(pharmacyMap);
+
+                // Thêm thông tin popup khi nhấp vào marker
+                pharmacyMarker.bindPopup(`
+                    <strong>Nhà Thuốc PharmaCare</strong><br>
+                    XVM9+QF9, Đ. Nguyễn Khuyến, Khu Phố 5<br>
+                    Biên Hòa, Đồng Nai, Việt Nam<br>
+                    <strong>SĐT:</strong> 0123.456.789
+                `).openPopup();
+
+                // Cập nhật kích thước bản đồ khi modal hiển thị
+                pharmacyMap.invalidateSize();
+
+                // Xử lý sự kiện resize cửa sổ
+                window.addEventListener('resize', function() {
+                    if (document.getElementById('pharmacyMapModal').classList.contains('show')) {
+                        setTimeout(() => {
+                            pharmacyMap.invalidateSize();
+                        }, 200);
+                    }
+                });
+
+                // Thêm xử lý khi modal hiển thị (shown.bs.modal)
+                document.getElementById('pharmacyMapModal').addEventListener('shown.bs.modal', function() {
+                    setTimeout(() => {
+                        pharmacyMap.invalidateSize();
+                    }, 200);
+                });
+            }, 300);
+        } else {
+            // Nếu bản đồ đã được khởi tạo, chỉ cần cập nhật kích thước
+            setTimeout(() => {
+                pharmacyMap.invalidateSize();
+            }, 300);
+        }
+    }
+
+    // Tham chiếu đến nút "Tìm nhà thuốc" trong menu
+    const findPharmacyBtn = document.getElementById('find-pharmacy');
+    if (findPharmacyBtn) {
+        findPharmacyBtn.addEventListener('click', showPharmacyMap);
+    }
+
+    // Xử lý khi modal đóng
+    const pharmacyMapModal = document.getElementById('pharmacyMapModal');
+    if (pharmacyMapModal) {
+        pharmacyMapModal.addEventListener('hidden.bs.modal', function() {
+            // Không làm gì, giữ bản đồ trong bộ nhớ để sử dụng lại
+        });
+    }
+
     // Xử lý click vào service items
     document.querySelectorAll('.service-item').forEach(item => {
         item.addEventListener('click', () => {
             const serviceName = item.querySelector('.service-title').textContent;
 
-            Swal.fire({
-                title: '<span class="text-xl font-semibold">Thông báo hệ thống</span>',
-                html: `
-                    <div class="text-center mb-4">
-                        <i class="fas fa-tools text-4xl text-blue-500 mb-3"></i>
-                        <p class="text-lg mb-3">Tính năng <strong class="text-blue-600">"${serviceName}"</strong> đang được phát triển</p>
-                        <p class="text-gray-600 text-sm mb-2">Chúng tôi đang nỗ lực hoàn thiện tính năng này để mang đến trải nghiệm tốt nhất cho quý khách.</p>
-                        <p class="text-gray-600 text-sm">Vui lòng quay lại sau!</p>
-                    </div>
-                `,
-                icon: 'info',
-                confirmButtonText: 'Đã hiểu',
-                confirmButtonColor: 'hsl(var(--primary))',
-                showCloseButton: true,
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                },
-                customClass: {
-                    container: 'font-sans',
-                    popup: 'rounded-xl shadow-2xl',
-                    header: 'border-b pb-2',
-                    title: 'text-gray-800',
-                    content: 'pt-4',
-                    confirmButton: 'px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg',
-                    closeButton: 'focus:outline-none hover:text-gray-600'
-                }
-            });
+            // Kiểm tra nếu là "Tìm nhà thuốc" thì mở modal bản đồ
+            if (serviceName === "Tìm nhà thuốc") {
+                showPharmacyMap();
+            } else {
+                // Đối với các dịch vụ khác, hiển thị thông báo "Đang phát triển"
+                Swal.fire({
+                    title: '<span class="text-xl font-semibold">Thông báo hệ thống</span>',
+                    html: `
+                        <div class="text-center mb-4">
+                            <i class="fas fa-tools text-4xl text-blue-500 mb-3"></i>
+                            <p class="text-lg mb-3">Tính năng <strong class="text-blue-600">"${serviceName}"</strong> đang được phát triển</p>
+                            <p class="text-gray-600 text-sm mb-2">Chúng tôi đang nỗ lực hoàn thiện tính năng này để mang đến trải nghiệm tốt nhất cho quý khách.</p>
+                            <p class="text-gray-600 text-sm">Vui lòng quay lại sau!</p>
+                        </div>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'Đã hiểu',
+                    confirmButtonColor: 'hsl(var(--primary))',
+                    showCloseButton: true,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    customClass: {
+                        container: 'font-sans',
+                        popup: 'rounded-xl shadow-2xl',
+                        header: 'border-b pb-2',
+                        title: 'text-gray-800',
+                        content: 'pt-4',
+                        confirmButton: 'px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg',
+                        closeButton: 'focus:outline-none hover:text-gray-600'
+                    }
+                });
+            }
         });
     });
 });
@@ -1188,4 +1272,106 @@ function initializeBootstrapCarousel() {
             });
         });
     }
+}
+
+// Khởi tạo bộ lọc sản phẩm cho "Sản phẩm bán chạy"
+function initializeProductFilters() {
+    const priceFilter = document.getElementById('price-filter');
+    const discountFilter = document.getElementById('discount-filter');
+    const productsGrid = document.getElementById('top-selling-products-grid');
+
+    // Nếu không tìm thấy các phần tử cần thiết, thoát hàm
+    if (!priceFilter || !discountFilter || !productsGrid) return;
+
+    // Lưu trữ tất cả sản phẩm ban đầu để phục vụ việc lọc
+    const allProducts = Array.from(productsGrid.querySelectorAll('.product-card'));
+
+    // Hàm lọc sản phẩm
+    function filterProducts() {
+        const selectedPriceRange = priceFilter.value;
+        const selectedDiscount = discountFilter.value;
+
+        // Hiển thị tất cả sản phẩm trước khi lọc
+        allProducts.forEach(product => {
+            product.style.display = 'flex';
+        });
+
+        // Lọc theo giá
+        if (selectedPriceRange !== 'all') {
+            allProducts.forEach(product => {
+                const priceText = product.querySelector('.current-price').textContent;
+                const price = parseFloat(priceText.replace(/\D/g, ''));
+
+                if (selectedPriceRange === '1000000+') {
+                    // Trên 1.000.000đ
+                    if (price <= 1000000) {
+                        product.style.display = 'none';
+                    }
+                } else {
+                    // Các khoảng giá khác
+                    const [minPrice, maxPrice] = selectedPriceRange.split('-').map(Number);
+                    if (price < minPrice || (maxPrice && price > maxPrice)) {
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Lọc theo giảm giá
+        if (selectedDiscount !== 'all') {
+            const minDiscountPercent = parseInt(selectedDiscount);
+
+            allProducts.forEach(product => {
+                if (product.style.display !== 'none') {
+                    const discountTag = product.querySelector('.discount-tag');
+
+                    if (discountTag) {
+                        const discountText = discountTag.textContent;
+                        const discountPercent = parseInt(discountText.replace(/\D/g, ''));
+
+                        if (discountPercent < minDiscountPercent) {
+                            product.style.display = 'none';
+                        }
+                    } else {
+                        // Không có giảm giá
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Kiểm tra nếu không có sản phẩm nào được hiển thị
+        const visibleProducts = Array.from(productsGrid.querySelectorAll('.product-card')).filter(
+            product => product.style.display !== 'none'
+        );
+
+        if (visibleProducts.length === 0) {
+            // Hiển thị thông báo không có sản phẩm
+            let noProductsMessage = productsGrid.querySelector('.no-products-message');
+
+            if (!noProductsMessage) {
+                noProductsMessage = document.createElement('div');
+                noProductsMessage.className = 'no-products-message col-12 text-center py-5';
+                noProductsMessage.innerHTML = `
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Không tìm thấy sản phẩm phù hợp với bộ lọc. Vui lòng thử lại với điều kiện khác.
+                    </div>
+                `;
+                productsGrid.appendChild(noProductsMessage);
+            } else {
+                noProductsMessage.style.display = 'block';
+            }
+        } else {
+            // Ẩn thông báo nếu có sản phẩm được hiển thị
+            const noProductsMessage = productsGrid.querySelector('.no-products-message');
+            if (noProductsMessage) {
+                noProductsMessage.style.display = 'none';
+            }
+        }
+    }
+
+    // Thêm sự kiện lắng nghe cho bộ lọc
+    priceFilter.addEventListener('change', filterProducts);
+    discountFilter.addEventListener('change', filterProducts);
 }

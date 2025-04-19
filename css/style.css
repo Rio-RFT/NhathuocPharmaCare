@@ -2450,3 +2450,707 @@ body.dropdown-active {
 .view-cart-btn:hover {
     background-color: hsl(var(--primary-dark, var(--primary)));
 }
+
+/* Tối ưu cho màn hình lớn 2K (2560px) */
+@media (min-width: 2048px) {
+    .container {
+        max-width: 92%;
+        width: 92%;
+        padding: 0 20px;
+    }
+
+    body {
+        font-size: 18px;
+    }
+
+    .logo img {
+        max-height: 80px;
+    }
+
+    .main-nav li {
+        font-size: 1.2rem;
+    }
+
+    /* Hiển thị nhiều sản phẩm hơn trên một hàng */
+    .product-grid,
+    .products-grid,
+    .best-seller-grid,
+    .daily-products-grid,
+    .categories-grid,
+    .services-grid,
+    .popular-medicines-list,
+    .duoc-chat-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .row-cols-md-5>.col {
+        flex: 0 0 auto;
+        width: 16.666%;
+    }
+
+    /* Tăng kích thước các thành phần */
+    .product-title {
+        font-size: 1.2rem;
+        min-height: 50px;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .add-to-cart {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+    }
+
+    .search-box {
+        max-width: 600px;
+    }
+
+    .search-box input {
+        padding: 14px;
+        font-size: 1.1rem;
+    }
+
+    .search-box button {
+        padding: 14px 24px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.4rem;
+    }
+
+    .footer-column a {
+        font-size: 1.1rem;
+    }
+
+    .hotline-number {
+        font-size: 1.3rem;
+    }
+
+    #bannerCarousel .carousel-item img {
+        max-height: 500px;
+        object-fit: cover;
+    }
+
+    .dropdown-menu {
+        width: 90% !important;
+        max-width: 1600px !important;
+    }
+
+    .dropdown-container {
+        width: 100%;
+    }
+}
+
+/* Tối ưu cho màn hình cực lớn 4K (3840px) */
+@media (min-width: 3840px) {
+    .container {
+        max-width: 95%;
+        width: 95%;
+        padding: 0 30px;
+    }
+
+    body {
+        font-size: 22px;
+    }
+
+    .logo img {
+        max-height: 100px;
+    }
+
+    .main-nav li {
+        font-size: 1.4rem;
+        padding: 20px 30px;
+    }
+
+    /* Hiển thị nhiều sản phẩm hơn */
+    .product-grid,
+    .products-grid,
+    .best-seller-grid,
+    .daily-products-grid,
+    .categories-grid,
+    .services-grid,
+    .popular-medicines-list,
+    .duoc-chat-list {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .row-cols-md-5>.col {
+        flex: 0 0 auto;
+        width: 12.5%;
+    }
+
+    .product-title {
+        font-size: 1.4rem;
+        min-height: 60px;
+    }
+
+    .product-price {
+        font-size: 1.3rem;
+    }
+
+    .add-to-cart {
+        padding: 16px 32px;
+        font-size: 1.3rem;
+    }
+
+    .search-box {
+        max-width: 800px;
+    }
+
+    .search-box input {
+        padding: 18px;
+        font-size: 1.3rem;
+    }
+
+    .search-box button {
+        padding: 18px 32px;
+        font-size: 1.3rem;
+    }
+
+    .top-header {
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .user-actions a {
+        padding: 12px 24px;
+        font-size: 1.2rem;
+    }
+
+    .cart-count {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .footer-column a {
+        font-size: 1.3rem;
+    }
+
+    .hotline-number {
+        font-size: 1.5rem;
+    }
+
+    .featured-products .section-title {
+        font-size: 2rem;
+    }
+
+    #bannerCarousel .carousel-item img {
+        max-height: 750px;
+    }
+
+    /* Tăng kích thước các phần tử container */
+    .dropdown-menu {
+        width: 90% !important;
+        max-width: 2400px !important;
+        height: 700px;
+    }
+
+    .dropdown-container {
+        width: 100%;
+        height: 700px;
+    }
+
+    .daily-slide-container {
+        height: 600px;
+    }
+}
+
+/* Container mặc định */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    overflow: visible !important;
+    position: relative;
+}
+
+@media (min-width: 1400px) and (max-width: 2047px) {
+    .container {
+        max-width: 1800px;
+        width: 94%;
+    }
+
+    /* Hiển thị nhiều sản phẩm hơn trên một hàng */
+    .product-grid,
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .best-seller-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        width: 100%;
+    }
+    .row-cols-md-5>.col {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+
+    /* Cải thiện hiển thị banner */
+    #bannerCarousel .carousel-item img {
+        max-height: 450px;
+    }
+}
+
+/* Tìm nhà thuốc */
+#find-pharmacy {
+    color: hsl(var(--primary));
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+#find-pharmacy:hover {
+    background-color: hsl(var(--primary));
+    color: #fff;
+}
+
+#find-pharmacy i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.pharmacy-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid hsl(var(--primary));
+}
+
+.pharmacy-info p {
+    margin-bottom: 8px;
+}
+
+.pharmacy-info i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.modal-footer .btn-primary {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: hsl(var(--ring));
+    border-color: hsl(var(--ring));
+}
+
+/* Modal bản đồ */
+#pharmacyMapModal .modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto;
+    overflow: hidden;
+}
+
+#pharmacyMap {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.pharmacy-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid hsl(var(--primary));
+    margin-bottom: 15px;
+}
+
+/* Responsive cho modal bản đồ */
+@media (max-width: 992px) {
+    #pharmacyMapModal .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    #pharmacyMapModal .modal-dialog {
+        max-width: 95%;
+        margin: 1rem auto;
+    }
+
+    #pharmacyMap {
+        height: 350px;
+    }
+
+    .pharmacy-info {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    #pharmacyMapModal .modal-header {
+        padding: 0.75rem;
+    }
+
+    #pharmacyMapModal .modal-body {
+        padding: 0.75rem;
+    }
+
+    #pharmacyMapModal .modal-footer {
+        padding: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #pharmacyMapModal .modal-footer .btn {
+        margin: 0.25rem;
+        width: 100%;
+    }
+
+    #pharmacyMap {
+        height: 300px;
+    }
+}
+
+/* CSS cho bộ lọc sản phẩm */
+.product-filters {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
+}
+
+.product-filters select {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.product-filters select:focus {
+    border-color: hsl(var(--primary));
+    outline: none;
+    box-shadow: 0 0 0 2px hsla(var(--primary), 0.2);
+}
+
+.product-filters label {
+    color: #333;
+    font-size: 14px;
+}
+
+.no-products-message {
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.no-products-message .alert {
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive cho bộ lọc sản phẩm */
+@media (max-width: 768px) {
+    .product-filters {
+        padding: 10px;
+    }
+
+    .product-filters label {
+        min-width: 70px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-filters select {
+        width: 100%;
+    }
+
+    .product-filters .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .product-filters label {
+        margin-bottom: 8px;
+    }
+}
+
+/* Ô chat AI */
+.ai-chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+}
+
+.chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--ring)));
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chat-toggle-btn i {
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.chat-toggle-btn .chat-label {
+    position: absolute;
+    right: 70px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: hsl(var(--primary));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.chat-toggle-btn:hover .chat-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chat-container {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chat-container.active {
+    display: flex;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-header {
+    padding: 16px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--ring)));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: white;
+    padding: 5px;
+}
+
+.chat-title h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.chat-title small {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.chat-minimize-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.chat-minimize-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.message {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-message {
+    align-self: flex-end;
+}
+
+.ai-message {
+    align-self: flex-start;
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.user-message .message-content {
+    background: hsl(var(--primary));
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-message .message-content {
+    background: #f0f2f5;
+    color: #1c1e21;
+    border-bottom-left-radius: 4px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #65676b;
+    margin-top: 2px;
+}
+
+.chat-input {
+    padding: 16px;
+    border-top: 1px solid #e4e6eb;
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.chat-input textarea {
+    flex: 1;
+    border: 1px solid #e4e6eb;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    resize: none;
+    max-height: 100px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.chat-input textarea:focus {
+    border-color: hsl(var(--primary));
+}
+
+.chat-input button {
+    background: none;
+    border: none;
+    color: hsl(var(--primary));
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.chat-input button:not(:disabled) {
+    opacity: 1;
+}
+
+.chat-input button:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive cho ô chat */
+@media (max-width: 768px) {
+    .chat-container {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 100px);
+        bottom: 70px;
+    }
+
+    .chat-toggle-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .chat-toggle-btn i {
+        font-size: 20px;
+    }
+
+    .chat-label {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        bottom: 60px;
+    }
+}
