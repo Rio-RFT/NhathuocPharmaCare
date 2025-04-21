@@ -785,7 +785,7 @@ function initializeAddress() {
     $('#ward').data('placeholder', 'Tìm và chọn phường/xã');
 
     // Gọi API lấy danh sách tỉnh/thành
-    axios.get(host + '?depth=1')
+    axios.get(host + '?depth=3')
         .then((response) => {
             renderAddressSelect(response.data, "city");
             // Refresh Select2 sau khi cập nhật dữ liệu
